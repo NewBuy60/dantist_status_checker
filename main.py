@@ -21,9 +21,10 @@ for dantist in list_of_dantists:
     list_urls.append(url)
 
 flag = 0
-for url in list_urls[0:1]:
+list_available_dantists = []
+for url in list_urls:
 
-    page = requests.get(f'https://reg03.k-vrachu.ru{url}')   
+    page = requests.get(f'https://reg03.k-vrachu.ru{url}')
     soup = BeautifulSoup(page.text, 'lxml')
     dantist_name = soup.find('span', class_='docname').text
     items = soup.find(['table', 'timeTable slick-slide slick-active']).find_all('td')
